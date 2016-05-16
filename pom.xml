@@ -20,4 +20,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <version>5.1.1_r2</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
