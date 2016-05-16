@@ -1,5 +1,6 @@
 package com.iodesystems.android.libs.view;
 
+import android.content.Context;
 import android.view.View;
 import com.iodesystems.android.libs.view.transitions.TransitionInFromRight;
 import com.iodesystems.android.libs.view.transitions.TransitionPair;
@@ -17,8 +18,8 @@ public class Pager {
         this.defaultTransition = defaultTransition;
     }
 
-    public Pager() {
-        this(new TransitionInFromRight());
+    public Pager(Context context) {
+        this(new TransitionInFromRight(context));
     }
 
     public void enter(View in) {
@@ -46,5 +47,9 @@ public class Pager {
         transitionPair.exit(out, in);
 
         return true;
+    }
+
+    public TransitionPair getDefaultTransition() {
+        return defaultTransition;
     }
 }

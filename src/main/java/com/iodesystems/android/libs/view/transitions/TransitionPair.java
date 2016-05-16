@@ -11,6 +11,7 @@ public class TransitionPair {
     private final Animation exitIn;
     private final Animation exitOut;
 
+
     public TransitionPair(Animation enterOut,
                           Animation enterIn,
                           Animation exitOut,

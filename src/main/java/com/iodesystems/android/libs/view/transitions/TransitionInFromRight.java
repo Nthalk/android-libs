@@ -1,13 +1,16 @@
 package com.iodesystems.android.libs.view.transitions;
 
-import android.view.animation.TranslateAnimation;
+import android.content.Context;
+import com.iodesystems.android.libs.R;
+
+import static android.view.animation.AnimationUtils.loadAnimation;
 
 public class TransitionInFromRight extends TransitionPair {
 
-    public TransitionInFromRight() {
-        super(new TranslateAnimation(0.0f, -1.0f, 0.0f, 0.0f),
-              new TranslateAnimation(1.0f, 0.0f, 0.0f, 0.0f),
-              new TranslateAnimation(0.0f, 1.0f, 0.0f, 0.0f),
-              new TranslateAnimation(-1.0f, 0.0f, 0.0f, 0.0f));
+    public TransitionInFromRight(Context context) {
+        super(loadAnimation(context, R.anim.slide_left_out),
+              loadAnimation(context, R.anim.slide_left_in),
+              loadAnimation(context, R.anim.slide_right_out),
+              loadAnimation(context, R.anim.slide_right_in));
     }
 }
