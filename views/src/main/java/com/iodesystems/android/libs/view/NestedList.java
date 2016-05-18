@@ -25,6 +25,7 @@ public class NestedList<T> extends RelativeLayout {
     private ListView listViewB;
     private ListView listViewA;
     private Adapter<T> adapter;
+    private boolean selectable;
 
     public static abstract class Adapter<ITEM> {
         public abstract List<ITEM> getChildren(ITEM item);
@@ -38,6 +39,10 @@ public class NestedList<T> extends RelativeLayout {
             if (!children.isEmpty()) {
                 nestedList.down(item);
             }
+        }
+
+        public View initializeView(View view) {
+            return view;
         }
     }
 
@@ -53,6 +58,10 @@ public class NestedList<T> extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    public void setSelectable(boolean selectable) {
+        this.selectable = selectable;
+    }
+
     public void init(List<T> root, Adapter<T> adapter) {
         this.adapter = adapter;
         this.root = root;
@@ -63,9 +72,11 @@ public class NestedList<T> extends RelativeLayout {
 
     private void buildLists() {
         listViewA = new ListView(getContext());
+        if (!selectable) listViewA.setSelector(android.R.color.transparent);
         addView(listViewA);
 
         listViewB = new ListView(getContext());
+        if (!selectable) listViewB.setSelector(android.R.color.transparent);
         addView(listViewB);
     }
 
@@ -136,7 +147,7 @@ public class NestedList<T> extends RelativeLayout {
                 View view;
 
                 if (convertView == null) {
-                    view = LayoutInflater.from(getContext()).inflate(getItemLayout(), parent, false);
+                    view = initializeView(LayoutInflater.from(getContext()).inflate(getItemLayout(), parent, false));
                 } else {
                     view = convertView;
                 }
@@ -147,5 +158,9 @@ public class NestedList<T> extends RelativeLayout {
                 return view;
             }
         };
+    }
+
+    private View initializeView(View view) {
+        return adapter.initializeView(view);
     }
 }
