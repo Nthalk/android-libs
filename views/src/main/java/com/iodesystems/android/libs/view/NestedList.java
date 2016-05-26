@@ -34,6 +34,10 @@ public class NestedList<T> extends RelativeLayout {
 
         public abstract void populateView(View view, ITEM item);
 
+        public void onItemEnter(ITEM item){
+
+        }
+
         public void onItemClick(NestedList<ITEM> nestedList, ITEM item) {
             List<ITEM> children = getChildren(item);
             if (!children.isEmpty()) {
@@ -68,6 +72,7 @@ public class NestedList<T> extends RelativeLayout {
         pager = new Pager(getContext());
         buildLists();
         pager.enter(nextList(root));
+        adapter.onItemEnter(null);
     }
 
     private void buildLists() {
@@ -114,6 +119,7 @@ public class NestedList<T> extends RelativeLayout {
         } else {
             nextList(getChildren(top));
         }
+        adapter.onItemEnter(top);
     }
 
     private ListView nextList(final List<T> items) {
@@ -136,6 +142,7 @@ public class NestedList<T> extends RelativeLayout {
     public void down(T to, TransitionPair transition) {
         path.push(to);
         pager.enter(nextList(getChildren(to)), transition);
+        adapter.onItemEnter(to);
     }
 
     private ArrayAdapter<T> getListAdapter(List<T> items) {
