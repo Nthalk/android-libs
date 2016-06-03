@@ -31,6 +31,10 @@ public class TransitionPair {
     }
 
     private void perform(final View outView, View inView, Animation outAnimation, Animation inAnimation) {
+        if(outView instanceof OnExitListener){
+            ((OnExitListener) outView).onViewnExit();
+        }
+
         outView.clearAnimation();
         outView.startAnimation(outAnimation);
         outAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -47,8 +51,20 @@ public class TransitionPair {
             }
         });
 
+        if(inView instanceof OnEnterListener){
+            ((OnEnterListener) outView).onViewnEnter();
+        }
+        
         inView.clearAnimation();
         inView.startAnimation(inAnimation);
         inView.setVisibility(View.VISIBLE);
+    }
+
+    public interface OnEnterListener{
+        void onViewnEnter();
+    }
+
+    public interface OnExitListener{
+        void onViewnExit();
     }
 }

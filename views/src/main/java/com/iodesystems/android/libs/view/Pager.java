@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 public class Pager {
 
+    private OnPageListener onPageTransitionListener = null;
     private final Deque<TransitionPair> transitionPairs = new LinkedList<TransitionPair>();
     private final Deque<View> views = new LinkedList<View>();
     private final TransitionPair defaultTransition;
@@ -27,9 +28,11 @@ public class Pager {
     }
 
     public void enter(View in, TransitionPair transitionPair) {
-
         if (!views.isEmpty()) {
             View out = views.peek();
+            if (onPageTransitionListener != null) {
+                onPageTransitionListener.onPageTransition(in, out);
+            }
             transitionPair.enter(out, in);
         }
         views.push(in);
@@ -44,6 +47,11 @@ public class Pager {
         TransitionPair transitionPair = transitionPairs.pop();
         View out = views.pop();
         View in = views.peek();
+
+        if (onPageTransitionListener != null) {
+            onPageTransitionListener.onPageTransition(in, out);
+        }
+
         transitionPair.exit(out, in);
 
         return true;
@@ -51,5 +59,17 @@ public class Pager {
 
     public TransitionPair getDefaultTransition() {
         return defaultTransition;
+    }
+
+    public OnPageListener getOnPageTransitionListener() {
+        return onPageTransitionListener;
+    }
+
+    public void setOnPageTransitionListener(OnPageListener onPageTransitionListener) {
+        this.onPageTransitionListener = onPageTransitionListener;
+    }
+
+    public static abstract class OnPageListener {
+        public abstract void onPageTransition(View in, View out);
     }
 }
