@@ -26,12 +26,12 @@
         <connection>scm:git:git@github.com:Nthalk/android-libs.git</connection>
         <developerConnection>scm:git:git@github.com:Nthalk/android-libs.git</developerConnection>
         <url>http://nthalk.github.io/android-libs/</url>
-        <tag>HEAD</tag>
+        <tag>android-libs-1.0.3</tag>
     </scm>
 
     <groupId>com.iodesystems.android</groupId>
     <artifactId>android-libs</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <packaging>pom</packaging>
     <modules>
