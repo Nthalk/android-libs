@@ -23,6 +23,10 @@ public class Pager {
         this(new TransitionInFromRight(context));
     }
 
+    public View top(){
+        return views.peek();
+    }
+
     public void enter(View in) {
         enter(in, defaultTransition);
     }
@@ -34,13 +38,13 @@ public class Pager {
                 onPageTransitionListener.onPageTransition(in, out);
             }
             transitionPair.enter(out, in);
+            transitionPairs.push(transitionPair);
         }
         views.push(in);
-        transitionPairs.push(transitionPair);
     }
 
     public boolean exit() {
-        if(views.isEmpty()){
+        if(transitionPairs.isEmpty()){
             return false;
         }
 
