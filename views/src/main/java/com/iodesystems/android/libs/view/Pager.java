@@ -39,6 +39,8 @@ public class Pager {
             }
             transitionPair.enter(out, in);
             transitionPairs.push(transitionPair);
+        } else if (in instanceof TransitionPair.OnEnterListener) {
+            ((TransitionPair.OnEnterListener) in).onViewnEnter();
         }
         views.push(in);
     }

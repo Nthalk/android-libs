@@ -52,7 +52,7 @@ public class TransitionPair {
         });
 
         if(inView instanceof OnEnterListener){
-            ((OnEnterListener) outView).onViewnEnter();
+            ((OnEnterListener) inView).onViewnEnter();
         }
         
         inView.clearAnimation();
