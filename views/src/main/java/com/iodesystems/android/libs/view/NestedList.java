@@ -50,6 +50,10 @@ public class NestedList<T> extends RelativeLayout {
         }
     }
 
+    public int getDepth(){
+        return path.size();
+    }
+
     public NestedList(Context context) {
         super(context);
     }
