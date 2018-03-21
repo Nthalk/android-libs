@@ -40,6 +40,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>views</module>
+        <module>demo</module>
     </modules>
 
     <build>

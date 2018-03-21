@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.iodesystems.android.demo"
+          android:versionCode="0"
+          android:versionName="Demo">
+    <application android:debuggable="true"
+                 android:theme="@android:style/Theme.Holo.Light">
+        <activity android:name=".DemoActivity_">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 export GPG_TTY=$(tty)
-mvn release:prepare release:perform -Dgpg.skip=false
+mvn release:prepare release:perform -Dgpg.skip=false -Drelease=true
 

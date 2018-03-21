@@ -34,7 +34,7 @@ public class NestedList<T> extends RelativeLayout {
 
         public abstract void populateView(View view, ITEM item);
 
-        public void onItemEnter(ITEM item){
+        public void onItemEnter(ITEM item) {
 
         }
 
@@ -50,7 +50,7 @@ public class NestedList<T> extends RelativeLayout {
         }
     }
 
-    public int getDepth(){
+    public int getDepth() {
         return path.size();
     }
 
@@ -151,8 +151,8 @@ public class NestedList<T> extends RelativeLayout {
 
     private ArrayAdapter<T> getListAdapter(List<T> items) {
         return new ArrayAdapter<T>(getContext(),
-                                   getItemLayout(),
-                                   items) {
+                getItemLayout(),
+                items) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view;
