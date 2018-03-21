@@ -18,15 +18,21 @@
                 <groupId>com.simpligility.maven.plugins</groupId>
                 <version>4.4.3</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <sdk>
+                        <platform>26</platform>
+                        <buildTools>27.0.3</buildTools>
+                    </sdk>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>android</groupId>
+            <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>5.1.1_r2</version>
+            <version>4.1.1.4</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
