@@ -71,6 +71,9 @@ public class NestedList<T> extends RelativeLayout {
     }
 
     public void init(List<T> root, Adapter<T> adapter) {
+        if (listViewA != null || listViewB != null) removeAllViews();
+        if (pager != null) while (pager.exit()) ;
+
         this.adapter = adapter;
         this.root = root;
         pager = new Pager(getContext());
